@@ -29,6 +29,7 @@ int aes_gcm_afalg(char *input_buf, char *key_buf, char *iv_buf, char *alafg_buf)
 	bind(tfmfd, (struct sockaddr *)&sa, sizeof(sa));
 
 	setsockopt(tfmfd, SOL_ALG, ALG_SET_KEY, key_buf, 16);
+	setsockopt(tfmfd, SOL_ALG, ALG_SET_AEAD_AUTHSIZE, NULL, 16);
 
 	opfd = accept(tfmfd, NULL, 0);
 
